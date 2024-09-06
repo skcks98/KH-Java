@@ -14,7 +14,6 @@ public class Hero {
 	}
 	
 	public Hero(String nickname, String job, int hp, int mp, int level, double exp) {
-		super();
 		this.nickname = nickname;
 		this.job = job;
 		this.hp = hp;
@@ -87,14 +86,15 @@ public class Hero {
 	
 	
 	// attack
-	public void attack(exp:double) {
+	public void attack(double exp) {
 		this.exp += exp;
-        System.out.println(nickname + "가 공격했습니다. 현재 경험치: " + this.exp);
+		
+        System.out.printf("'%s' 은/는 공격을 했다! 현재 경험치: %.1f\n", nickname, this.exp ); // this.exp 경험치 누적
         
-        if(exp>=300) {
-        	level++;
-        	exp--;
-        	System.out.println("레벨이 1 올랐습니다! 현재 레벨 : " + level);
+        if(this.exp>=300) {
+        	this.level++;
+        	
+        	System.out.println("레벨이 올랐습니다! 현재 레벨 : " + level);
         }
 		
 	}
@@ -104,8 +104,14 @@ public class Hero {
 	
 	// dash
 	public void dash() {
-		if(mp>=0) {
+		
+		if(mp<=0) {
+			System.out.println("(마력 부족) 더 이상 대시할 수 없어요~!"); // this.mp 마나 누적
+	        
 			
+		} else {
+			mp -= 10;
+			System.out.printf("'%s'의 엄청 빠른 대시!! 남은 마력 : %d\n",nickname,  this.mp);
 		}
 		
 		
@@ -116,16 +122,17 @@ public class Hero {
 	// toString
 	@Override
 	public String toString() {
-		return nickname + "/" + job  + "/" + hp  + "/" + mp  + "/" + level  + "/" + exp;
+		return  "현재 레벨 : " + level + "\n"+  "현재 hp : " + hp +"\n"+ "현재 mp : "+ mp + "\n"+ "현재 exp : " +exp;
 	}
 
 	
-	
-	
-	
-	
-	
-	
+	/*
+	  	"===='%s'님의 정보=======\n"
+				+ "-현재 레벨 : %d\n"
+				+ "-현재 hp : %d\n"
+				+ "-현재 mp : %d\n"
+				+ "-현재 exp : %.1f\n";
+	 */
 	
 	
 	

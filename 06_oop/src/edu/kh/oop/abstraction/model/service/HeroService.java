@@ -14,10 +14,16 @@ public class HeroService {
 	System.out.println("========캐릭터 생성=========");
 	System.out.println("전사 직업으로 " + hero1.getNickname() + "님이 생성되었습니다.");
 	
-	System.out.printf("\n현재 레벨 : %d", hero1.getLevel());
-	System.out.printf("\n현재 hp : %d", hero1.getHp());
-	System.out.printf("\n현재 mp : %d", hero1.getMp());
-	System.out.printf("\n현재 경험치 : %.1f", hero1.getExp());
+	
+	System.out.println(hero1.toString()); // toString 출력
+	
+	
+//	System.out.printf("\n현재 레벨 : %d", hero1.getLevel());
+//	System.out.printf("\n현재 hp : %d", hero1.getHp());
+//	System.out.printf("\n현재 mp : %d", hero1.getMp());
+//	System.out.printf("\n현재 경험치 : %.1f\n", hero1.getExp());
+//	
+	System.out.println();
 	
 	//법사
 	System.out.println("========캐릭터 생성=========");
@@ -26,11 +32,37 @@ public class HeroService {
 	System.out.printf("\n현재 레벨 : %d", hero2.getLevel());
 	System.out.printf("\n현재 hp : %d", hero2.getHp());
 	System.out.printf("\n현재 mp : %d", hero2.getMp());
-	System.out.printf("\n현재 경험치 : %.1f", hero2.getExp());
+	System.out.printf("\n현재 경험치 : %.1f\n", hero2.getExp());
+	
+	System.out.println();
 	
 	
-	System.out.println("========이구역짱 시점=========");
-	System.out.println(hero1.getNickname() +"은/는 공격을 했다!!! 현재 경험치 : " + hero1.getExp());
+	System.out.printf("========'%s' 시점=========\n",hero1.getNickname());
+	hero1.attack(100); 
+	hero1.attack(50.5); 
+	hero1.attack(49.5);
+	
+	hero1.dash();
+	hero1.dash();
+	hero1.dash();
+	
+	System.out.println();
+	
+	System.out.println("========" + hero1.getNickname() + "의 정보==========");
+	System.out.println(hero1.toString());
+	
+	System.out.println();
+	
+	System.out.printf("========'%s의 시점'=========\n",hero2.getNickname());
+	hero2.attack(300); 
+	hero2.dash();
+	hero2.attack(300); 
+	hero2.attack(300); 
+	
+	System.out.println();
+	
+	System.out.println("========" + hero2.getNickname() + "의 정보==========");
+	System.out.println(hero2.toString());
 	
 	}
 }

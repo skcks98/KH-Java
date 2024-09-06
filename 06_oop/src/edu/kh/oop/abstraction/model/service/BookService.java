@@ -18,9 +18,9 @@ public class BookService {
 	
 	public void practice() {
 		
-		Book book1 = new Book();
+		Book book1 = new Book(); // 기본 생성자
 		
-		Book book2 = new Book("자바의정석", 30000, 0.2, "남궁성" );
+		Book book2 = new Book("자바의정석", 30000, 0.2, "남궁성" ); // 매개변수 생성자
 		
 		
 		// 3) 객체가 가진 필드 값을 toString()을 이용하여 출력
