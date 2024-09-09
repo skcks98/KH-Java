@@ -17,6 +17,8 @@ public class Member {
 	// alt + shift + s  => o
 	public Member(String memberId, String memberPw, String memberName, int memberAge) {
 		// 오버로딩 적용(매개변수의 개수 다름)
+		// 1. 메서드명이 같아야한다.
+		// 2. 매개변수의 순서, 개스, 타입 중 1 달라야한다.
 		
 		this.memberId = memberId;
 		this.memberPw = memberPw;
@@ -59,16 +61,6 @@ public class Member {
 		this.memberAge = memberAge;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 }

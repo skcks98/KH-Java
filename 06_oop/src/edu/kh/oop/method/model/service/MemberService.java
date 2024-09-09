@@ -139,6 +139,8 @@ public class MemberService {
 		} else {
 			
 			return "아이디 또는 비밀번호가 일치하지 않습니다.";
+			// return : 현재 메서드를 종료하고 함수를 호출한 쪽으로 되돌아가는 것
+			// return 값 : 현재 메서드를 종료하고, 함수를 호출한 쪽으로 값을 가지고 되돌아 가는 것
 		}
 		
 		
@@ -162,6 +164,12 @@ public class MemberService {
 			System.out.println("나이 : " + loginMember.getMemberAge() );
 		}
 		
+		/*String str = "이름 : " + loginMember.getMemberName();
+		str += "\n아이디 : " + loginMember.getMemberId();
+		str += "\n나이 : " + loginMember.getMemberAge() + "세";
+		
+		return str; */
+		
 	}
 	
 			
@@ -181,40 +189,22 @@ public class MemberService {
 			System.out.print("수정할 나이 : ");
 			int newAge = sc.nextInt();
 			
-			loginMember.setMemberName(newName);
-			loginMember.setMemberAge(newAge);
+			System.out.print("비밀번호 입력 : ");
+			String inputPw = sc.next();
+			
+			if(inputPw.equals(loginMember.getMemberPw())) {
+				loginMember.setMemberName(newName);
+				loginMember.setMemberAge(newAge);
+			}
+			
+//			loginMember.setMemberName(newName);
+//			loginMember.setMemberAge(newAge);
 			
 			System.out.println("회원 정보가 수정되었습니다!");
 			
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	
 }
