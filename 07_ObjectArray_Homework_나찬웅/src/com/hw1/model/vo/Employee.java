@@ -195,7 +195,9 @@ public class Employee {
 
 	// toString 메서드
 	public String information() {
-		return " ";
+		return   empNo + ", " + empName + ", " + dept + ", " + job + ", " + age + 
+			       ", " + gender + ", " + salary + ", " + bonusPoint + 
+			       ", " + phone + ",  " + address;
 	} 
 	
 	

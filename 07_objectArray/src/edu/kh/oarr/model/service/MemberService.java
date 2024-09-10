@@ -34,7 +34,7 @@ public class MemberService {
 		
 		// 무조건 한번은 반복
 		do {
-			System.out.print("====회원 정보 관리 프로그램====\n");
+			System.out.print("====회원 정보 관리 프로그램 v2====\n");
 			System.out.println("1. 회원가입");
 			System.out.println("2. 로그인");
 			System.out.println("3. 회원 정보 조회");
@@ -51,7 +51,18 @@ public class MemberService {
 			case 1 : System.out.println(signUp()); break; 
 			case 2 : System.out.println(login()); break; 
 			case 3 : System.out.println(selectMember()); break; 
-			case 4 : System.out.println(updateMember()); break; 
+			case 4 :
+				int result = updateMember();
+				if(result == -1) {
+					System.out.println("로그인후 이용 바람");
+					
+				} else if(result == 0) {
+					System.out.println("회원정보 수정 실패(비밀번호 불일치)");
+					
+				} else { // result == 1
+					System.out.println("회원정보 수정 완료");
+				}
+			
 			case 5 : searchRegion(); break; 
 			case 0 : System.out.println("프로그램 종료..."); break;
 			default : System.out.println("잘못입력하셨습니다. 다시 입력하세요");
@@ -189,6 +200,7 @@ public class MemberService {
 		
 		if(loginMember == null) {
 			return "로그인 후 이용하세요";
+			
 		} else { // 로그인시
 			String str = "이름 : " + loginMember.getMemberName();
 			str += "\n아이디 : " + loginMember.getMemberId();
@@ -212,15 +224,24 @@ public class MemberService {
 		// -> 로그인 안되어있으면 -1 반환
 		System.out.println("\n=====회원 정보 수정=====");
 		
-		
-		// 2) 수정할 회원 정보 입력받기 (이름, 나이, 지역)
 		if(loginMember == null) {
 			System.out.println("로그인 후 이용하세요");
 			
 			return -1;
 		} 
-
 		
+		
+		// 2) 수정할 회원 정보 입력받기 (이름, 나이, 지역)
+		// 새로운 정보 입력
+		
+	    System.out.print("수정할 이름 입력: ");
+	    String newName = sc.next();
+	    System.out.print("수정할 나이 입력: ");
+	    int newAge = sc.nextInt();
+	    System.out.print("수정할 지역 입력: ");
+	    String newRegion = sc.next();
+
+	 
 		// 3) 비밀번호를 입력받아서 로그인한 회원의 
 		// 비밀번호와 일치하는지 확인
 		
@@ -234,35 +255,20 @@ public class MemberService {
 			
 		 // 비밀번호가 일치하는지 확인
 	    if (loginMember.getMemberPw().equals(currentPw)) {
-	        System.out.println("회원 정보가 수정되었습니다.");
-	        
-	        // 새로운 정보 입력
-		    System.out.print("수정할 이름 입력: ");
-		    String newName = sc.next();
-		    System.out.print("수정할 나이 입력: ");
-		    int newAge = sc.nextInt();
-		    System.out.print("수정할 지역 입력: ");
-		    String newRegion = sc.next();
-
-		    // 수정된 정보를 loginMember에 반영
+	    	
+	    	// 수정된 정보를 loginMember에 반영
 		    loginMember.setMemberName(newName);
 		    loginMember.setMemberAge(newAge);
 		    loginMember.setRegion(newRegion);
-	        
+		    
 	        return 1;
-	        
-	    
 	        
 	    } else {
 	    	// 5) 비밀번호가 다른 경우 0 반환
-		    System.out.println("비밀번호가 일치하지 않습니다.");
 		    return 0;
 	    }
 
 	   
-
-	   
-		
 	}
 	
 	
