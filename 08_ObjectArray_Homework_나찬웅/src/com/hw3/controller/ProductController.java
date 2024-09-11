@@ -27,16 +27,6 @@ public class ProductController {
 	
 	public void productInput() {}
 	
-	do {
-		
-		
-		
-		
-		
-	} while(count) {
-		
-	}
 	
-	
-	public void productPrint() {}
 }
+	
