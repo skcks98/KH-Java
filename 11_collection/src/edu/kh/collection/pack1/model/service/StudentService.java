@@ -392,7 +392,7 @@ public class StudentService extends Object {
 			if (std.getName().contains(input)) {
 				System.out.println(std); // std.toString()
 
-				flag = false;c
+				flag = false;
 			}
 		}
 
