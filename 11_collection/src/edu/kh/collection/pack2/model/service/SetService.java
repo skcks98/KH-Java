@@ -147,7 +147,7 @@ public class SetService {
 		System.out.println("[List로 변환]");
 		
 		
-		// set에 저잦ㅇ된 객체를 이용해서 List 를
+		// set에 저장된 객체를 이용해서 List 를
 		
 		
 		
