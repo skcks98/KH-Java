@@ -83,7 +83,7 @@ public class Toy {
 	@Override
 	public String toString() {
 		return "Toy [장난감이름 : " + name + " / 사용연령 :" + age + " / 가격 : " + price + " / 색상 : " + color + " / 제조년월일 : "
-				+ manufactureDate + ", 사용재료 : " + materials + "]";
+				+ manufactureDate + " / 사용재료 : " + materials + "]";
 	}
 
 
