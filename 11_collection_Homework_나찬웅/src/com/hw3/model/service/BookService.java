@@ -1,5 +1,6 @@
 package com.hw3.model.service;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,8 +13,8 @@ public class BookService {
 
 	Scanner sc = new Scanner(System.in);
 
-	private List<Book> bookList = new LinkedList<Book>(); // 도서리스트
-	private List<Book> bookMarkList = new LinkedList<Book>(); // 즐겨찾기
+	private List<Book> bookList = new ArrayList<Book>(); // 도서리스트
+	private List<Book> bookMarkList = new ArrayList<Book>(); // 즐겨찾기
 
 	// 기본 생성자
 	public BookService() {
@@ -82,9 +83,11 @@ public class BookService {
 					System.out.println("메뉴에 작성된 번호만 입력하세요!");
 				}
 
-			} catch (InputMismatchException e) {
+			} catch (Exception e) {
+				// 예외 클래스의 최상위 클래
 				System.out.println("\nerror: 입력형식이 유효하지 않습니다. 다시 시도해주세요");
-
+				e.printStackTrace(); // 예외추적
+				
 				sc.nextLine(); // 입력버퍼에 남아있는 잘못된 코드 제거
 
 				menuNum = -1; // 첫 반복 시 잘못입력하는 경우
@@ -100,6 +103,9 @@ public class BookService {
 	
 	
 
+	/**
+	 * 도서 등록 메서드
+	 */
 	public void addBook() {
 		System.out.println("===== 도서 등록 =====");
 
@@ -121,6 +127,8 @@ public class BookService {
 		String publisher = sc.next();
 
 		Book newBook = new Book(bookId, bookName, bookAuthor, price, publisher);
+		bookList.add(newBook);
+		
 		System.out.println("도서 등록 완료 : " + newBook.toString());
 
 	}
@@ -149,10 +157,10 @@ public class BookService {
 		sc.nextLine();
 
 		// 해당 도서 찾기
-		boolean found = false;
+		boolean flag = false;
 		for (Book book : bookList) {
 			if (book.getBookId() == bookId) {
-				found = true;
+				flag = true;
 
 				int choice;
 
@@ -174,37 +182,45 @@ public class BookService {
 						System.out.println("=====도서 제목 수정=====");
 						System.out.println("수정할 도서 제목을 입력하세요 : ");
 
-						book.setBookName(sc.nextLine());
+						String title = sc.nextLine();
+						
+						book.setBookName(title);
 
 						System.out.println("수정 완료");
+						break;
 
 					case 2:
 						System.out.println("=====도서 저자 수정=====");
 						System.out.println("수정할 도서 저자를 입력하세요 : ");
 
-						book.setBookAuthor(sc.nextLine());
+						String writer = sc.nextLine();
+						book.setBookAuthor(writer);
 
 						System.out.println("수정 완료");
+						break;
 
 					case 3:
 						System.out.println("=====도서 가격 수정=====");
 						System.out.println("수정할 도서 가격을 입력하세요 : ");
 
-						book.setPrice(sc.nextInt());
+						int price = sc.nextInt();
+						book.setPrice(price);
 
 						System.out.println("수정 완료");
-						return;
+						break;
 
 					case 4:
 						System.out.println("=====도서 출판사 수정=====");
 						System.out.println("수정할 도서 출판사를 입력하세요 : ");
 
-						book.setPublisher(sc.nextLine());
+						String publisher = sc.nextLine();
+						book.setPublisher(publisher);
 
 						System.out.println("수정 완료");
-
-					case 0:
 						break;
+						
+					case 0: break;
+					default : System.out.println("메뉴에 있는 번호만 선택하세요"); break;
 
 					}
 
