@@ -253,7 +253,7 @@ public class ToyFactoryService {
 	}
 
 	/**
-	 * 장난감 제거 (미완)
+	 * 장난감 제거 (완)
 	 */
 	public void removeToy() throws Exception {
 
